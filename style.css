@@ -21,7 +21,7 @@
 	--section-kopi-fg: inherit;
 	--section-cincau-fg: inherit;
 	--section-brightness: 0.5;
-	--section-blur: 5px;
+	--section-blur: 10px;
 	--section-fg: #fff;
 
 	/* --header-bg: black; --header-fg: #F7E5B3; --bg: black; */
@@ -60,17 +60,6 @@ a:hover > #instagram-icon {
 h1 {
 	text-align: center;
 	margin-top: 5rem;
-}
-
-/* Ice Cream Preview */
-#ice-cream-preview {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-}
-
-#ice-cream-preview > img {
-	filter: brightness(0.6);
-	width: 100%;
 }
 
 
