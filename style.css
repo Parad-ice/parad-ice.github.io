@@ -36,7 +36,7 @@ body {
 	background: var(--bg);
 }
 
-#logo {
+.logo {
 	width: 7rem;
 	aspect-ratio: 1 / 1;
 }
@@ -89,16 +89,13 @@ header > div {
 	align-items: center;
 }
 
-header a {
+header a:not(:has(.logo)) {
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 1.3rem;
 	margin: 0px 2rem;
 	padding: 1rem;
 	padding: 0.25em;
-}
-
-header a {
 	color: var(--header-fg);
 	background: var(--header-bg);
 	transition:
@@ -106,10 +103,12 @@ header a {
 		background .25s;
 }
 
-header a:hover {
+header a:not(:has(.logo)):hover {
 	background: var(--header-fg);
 	color: var(--header-bg);
 }
+
+header .logo { margin-right: 2em }
 
 
 
