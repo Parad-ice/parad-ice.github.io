@@ -1,10 +1,11 @@
-html {
+* {
 	--bg: #fff;
 	--header-footer-padding: 1rem;
 	--preview-img-height: 30rem;
 	--header-bg: #E4D1B4;
 	--header-bg: #EFE3D2;
 	--header-bg: #F7E5B3;
+	--header-fg: #000000;
 	--section-bg: #C2FFFB;
 	--section-bg: #FF7D7D;
 	--section-jeruk-bg: #FFCE85;
@@ -19,27 +20,52 @@ html {
 	--section-jeruk-fg: inherit;
 	--section-kopi-fg: inherit;
 	--section-cincau-fg: inherit;
+	--section-brightness: 0.5;
+	--section-blur: 5px;
+	--section-fg: #fff;
+
+	/* --header-bg: black; --header-fg: #F7E5B3; --bg: black; */
+	font-family: "Rubik", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	scroll-behavior: smooth;
 }
 
 body {
 	margin: 0px;
+	background: var(--bg);
 }
 
 #logo {
 	width: 7rem;
 	aspect-ratio: 1 / 1;
-	margin-right: 2rem;
 }
 
 #instagram-icon {
 	aspect-ratio: 1 / 1;
 	height: 2em;
+	padding: .25rem;
+	border-radius: 1em;
+	fill: var(--header-fg);
+	transition:
+		fill .25s,
+		background .25s;
+}
+
+a:hover > #instagram-icon {
+	fill: var(--header-bg);
+	background: var(--header-fg);
+}
+
+h1 {
+	text-align: center;
+	margin-top: 5rem;
 }
 
 /* Ice Cream Preview */
 #ice-cream-preview {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: repeat(4, 1fr);
 }
 
 #ice-cream-preview > img {
@@ -54,6 +80,7 @@ header {
 	display: flex;
 	align-items: center;
 	background: var(--header-bg);
+	color: var(--header-fg)
 }
 
 header > div {
@@ -69,75 +96,91 @@ header a {
 	margin: 0px 2rem;
 	padding: 1rem;
 	padding: 0.25em;
-	background: none;
-	color: inherit;
-	transition: color .25s,
-				background .25s;
+}
+
+header a {
+	color: var(--header-fg);
+	background: var(--header-bg);
+	transition:
+		color .25s,
+		background .25s;
 }
 
 header a:hover {
-	background: black;
+	background: var(--header-fg);
 	color: var(--header-bg);
 }
 
 
+
 /* Sections */
-section {
-	margin: 2% 10%;
-	padding: 1rem;
+#section-wrapper > section {
+	height: 100vh;
+	padding: 2rem 4rem;
+	overflow: hidden;
+	position: relative;
+	color: var(--section-fg);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#section-wrapper > section::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: -1;
+	display: block;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	filter: blur(var(--section-blur)) brightness(var(--section-brightness));
+	-webkit-filter: blur(var(--section-blur)) brightness(var(--section-brightness));
+	-moz-filter: blur(var(--section-blur)) brightness(var(--section-brightness));
+	-o-filter: blur(var(--section-blur)) brightness(var(--section-brightness));
+	-ms-filter: blur(var(--section-blur)) brightness(var(--section-brightness));
+	transform: scale(1.03);
+}
+
+#section-wrapper > section h2 {
+	font-size: 4rem;
+	text-align: center;
+}
+
+#section-wrapper > section p {
+	font-size: 2rem;
+	text-align: center;
+}
+
+.section-container {
 	display: grid;
+	grid-template-rows: 1fr 1fr;
+	grid-gap: 2rem;
 }
 
-section h2 { text-align: center; }
-
-section:nth-child(odd) {
-	grid-template-columns: 60% 40%;
-}
-
-section:nth-child(even) {
-	grid-template-columns: 40% 60%;
-}
-
-section > * { margin: 5%; }
-section p { text-indent: 2rem; }
-section > img {
-	margin: 10%;
-	width: 80%;
-	height: 80%;
-	/* filter: brightness(0.7); */
-}
-
-#jeruk {
-	background: var(--section-jeruk-bg);
-	color: var(--section-jeruk-fg)
-}
-#kopi {
-	background: var(--section-kopi-bg);
-	color: var(--section-kopi-fg)
-}
-#cincau {
-	background: var(--section-cincau-bg);
-	color: var(--section-cincau-fg)
-}
-
-/* #about-us { */
-/* 	background: none; */
-/* 	backgrond: var(--bg); */
-/* } */
-
+#preview::before { background-image: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-mMt4yJrtdgE%2FTbka7uOlQhI%2FAAAAAAAAAP8%2Fg-3NOAszo-g%2Fs1600%2Fcool%252Bice%252Bcreams%252B%2525285%252529.jpg&f=1&nofb=1&ipt=061e9e79cbc9555a4c7b43eb4eedbdd85a7390e85646d4118c0587a3db6e2895&ipo=images"); }
+#jeruk::before { background-image: url("./assets/jeruk.jpg"); }
+#kopi::before { background-image: url("./assets/kopi.jpg"); }
+#cincau::before { background-image: url("./assets/cincau.jpg"); }
 
 /* Footer */
 footer {
 	background: var(--header-bg);
+	color: var(--header-fg);
 	padding: 2rem;
-	/* text-align: center; */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
+footer a svg {
+	float: right;
+	vertical-align: middle;
+}
 footer p {
 	display: inline;
 	text-align: left;
-}
-
-footer a {
-	float: right;
+	vertical-align: middle;
 }
