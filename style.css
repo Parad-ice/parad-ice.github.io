@@ -1,25 +1,8 @@
 * {
 	--bg: #fff;
 	--header-footer-padding: 1rem;
-	--preview-img-height: 30rem;
-	--header-bg: #E4D1B4;
-	--header-bg: #EFE3D2;
 	--header-bg: #F7E5B3;
 	--header-fg: #000000;
-	--section-bg: #C2FFFB;
-	--section-bg: #FF7D7D;
-	--section-jeruk-bg: #FFCE85;
-	--section-kopi-bg: #C59A5A;
-	--section-cincau-bg: #4D3619;
-	--section-jeruk-fg: inherit;
-	--section-kopi-fg: inherit;
-	--section-cincau-fg: #fff;
-	--section-jeruk-bg: inherit;
-	--section-kopi-bg: inherit;
-	--section-cincau-bg: inherit;
-	--section-jeruk-fg: inherit;
-	--section-kopi-fg: inherit;
-	--section-cincau-fg: inherit;
 	--section-brightness: 0.5;
 	--section-blur: 10px;
 	--section-fg: #fff;
@@ -148,6 +131,25 @@ header .logo { margin-right: 2em }
 	grid-gap: 2rem;
 }
 
+
+#carousel > section::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: -1;
+	display: block;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	filter: blur(var(--section-blur)) brightness(var(--section-brightness));
+	-webkit-filter: blur(var(--section-blur)) brightness(var(--section-brightness));
+	-moz-filter: blur(var(--section-blur)) brightness(var(--section-brightness));
+	-o-filter: blur(var(--section-blur)) brightness(var(--section-brightness));
+	-ms-filter: blur(var(--section-blur)) brightness(var(--section-brightness));
+	transform: scale(1.03);
+}
+
 #preview::before { background-image: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-mMt4yJrtdgE%2FTbka7uOlQhI%2FAAAAAAAAAP8%2Fg-3NOAszo-g%2Fs1600%2Fcool%252Bice%252Bcreams%252B%2525285%252529.jpg&f=1&nofb=1&ipt=061e9e79cbc9555a4c7b43eb4eedbdd85a7390e85646d4118c0587a3db6e2895&ipo=images"); }
 #jeruk::before { background-image: url("./assets/jeruk.jpg"); }
 #kopi::before { background-image: url("./assets/kopi.jpg"); }
@@ -162,7 +164,6 @@ footer {
 	justify-content: space-between;
 	align-items: center;
 }
-
 footer a svg {
 	float: right;
 	vertical-align: middle;
@@ -171,4 +172,61 @@ footer p {
 	display: inline;
 	text-align: left;
 	vertical-align: middle;
+}
+
+
+/* Animation */
+@keyframes floating {
+	0% { transform: translate(0px, 0rem) }
+	33% { transform: translate(0px, 1rem) }
+	66% { transform: translate(0px, -1rem) }
+}
+
+.animation-floating {
+	animation: floating 10s infinite ease-in-out;
+}
+
+
+/* Reference from https://codepen.io/alvarotrigo/pen/PoKMyzO */
+.logo-text {
+	color: transparent;
+	-webkit-text-stroke: 2px #fff;
+}
+
+.logo-text::before {
+	content: "Parad'ice";
+	color: #fff;
+	animation: milk 4s ease-in-out infinite;
+	position: absolute;
+}
+
+@keyframes milk {
+	0%,
+	100% {
+		clip-path: polygon(
+			0% 45%,
+			16% 44%,
+			33% 50%,
+			54% 60%,
+			70% 61%,
+			84% 59%,
+			100% 52%,
+			100% 100%,
+			0% 100%
+		);
+	}
+
+	50% {
+		clip-path: polygon(
+			0% 60%,
+			15% 65%,
+			34% 66%,
+			51% 62%,
+			67% 50%,
+			84% 45%,
+			100% 46%,
+			100% 100%,
+			0% 100%
+		);
+	}
 }
