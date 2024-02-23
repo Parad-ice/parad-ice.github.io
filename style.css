@@ -14,11 +14,6 @@
 	scroll-behavior: smooth;
 }
 
-body {
-	margin: 0px;
-	background: var(--bg);
-}
-
 .logo {
 	width: 7rem;
 	aspect-ratio: 1 / 1;
@@ -43,6 +38,17 @@ a:hover > #instagram-icon {
 h1 {
 	text-align: center;
 	margin-top: 5rem;
+}
+
+.coconut { color: #F6EAD1 }
+.oat { color: #FFF3C3 }
+
+html { overflow: hidden; }
+body {
+	margin: 0px;
+	scroll-snap-type: y mandatory;
+	overflow-y: scroll;
+	height: 100vh;
 }
 
 
@@ -85,7 +91,9 @@ header .logo { margin-right: 2em }
 
 
 /* Sections */
-#section-wrapper > section {
+body > * { scroll-snap-align: start; }
+
+section {
 	height: 100vh;
 	padding: 2rem 4rem;
 	overflow: hidden;
@@ -97,7 +105,7 @@ header .logo { margin-right: 2em }
 	flex-direction: column;
 }
 
-#section-wrapper > section::before {
+section::before {
 	content: "";
 	position: absolute;
 	left: 0;
@@ -115,12 +123,12 @@ header .logo { margin-right: 2em }
 	transform: scale(1.03);
 }
 
-#section-wrapper > section h2 {
+section h2 {
 	font-size: 4rem;
 	text-align: center;
 }
 
-#section-wrapper > section p {
+section p {
 	font-size: 2rem;
 	text-align: center;
 }
@@ -131,8 +139,7 @@ header .logo { margin-right: 2em }
 	grid-gap: 2rem;
 }
 
-
-#carousel > section::before {
+section::before {
 	content: "";
 	position: absolute;
 	left: 0;
@@ -154,6 +161,10 @@ header .logo { margin-right: 2em }
 #jeruk::before { background-image: url("./assets/jeruk.jpg"); }
 #kopi::before { background-image: url("./assets/kopi.jpg"); }
 #cincau::before { background-image: url("./assets/cincau.jpg"); }
+#jeruk > h2 { color: #FFE20B; }
+#kopi > h2 { color: #BA9D83; }
+#cincau > h2 { color: #84766A; }
+section > h2 { animation: floating 10s infinite ease-in-out; }
 
 /* Footer */
 footer {
@@ -178,8 +189,7 @@ footer p {
 /* Animation */
 @keyframes floating {
 	0% { transform: translate(0px, 0rem) }
-	33% { transform: translate(0px, 1rem) }
-	66% { transform: translate(0px, -1rem) }
+	50% { transform: translate(0px, -1rem) }
 }
 
 .animation-floating {
@@ -190,7 +200,9 @@ footer p {
 /* Reference from https://codepen.io/alvarotrigo/pen/PoKMyzO */
 .logo-text {
 	color: transparent;
+	font-weight: bold;
 	-webkit-text-stroke: 2px #fff;
+	position: relative;
 }
 
 .logo-text::before {
@@ -201,8 +213,7 @@ footer p {
 }
 
 @keyframes milk {
-	0%,
-	100% {
+	0%, 100% {
 		clip-path: polygon(
 			0% 45%,
 			16% 44%,
@@ -215,7 +226,6 @@ footer p {
 			0% 100%
 		);
 	}
-
 	50% {
 		clip-path: polygon(
 			0% 60%,
