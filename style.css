@@ -44,6 +44,7 @@ body {
 	overflow-y: scroll;
 	height: 100vh;
 	font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem); 
+	background: var(--header-bg);
 }
 
 
@@ -206,6 +207,14 @@ footer p {
 	position: absolute;
 }
 
+#slidemenu {
+	overflow: hidden;
+	transition:
+		opacity 1s ease-in-out,
+		height 1s ease-in-out;
+
+}
+
 @keyframes milk {
 	0%, 100% {
 		clip-path: polygon(
@@ -238,6 +247,7 @@ footer p {
 @media screen and (min-width: 768px) {
 	#slidemenu, #slidemenu-btn { display: none; }
 }
+
 @media screen and (max-width: 768px) {
 	header a:not(:has(.logo)) { display: none; }
 	#slidemenu-btn {
@@ -250,10 +260,22 @@ footer p {
 	#slidemenu-btn:hover { color: var(--header-fg); }
 	#slidemenu-btn > span { font-size: 2em; }
 	#slidemenu {
-		display: none;
+		display: grid;
 		grid-template-rows: 1fr 1fr 1fr;
 		width: 100%;
 		z-index: 1;
 		background: var(--header-bg);
+		font-size: 0rem;
+		opacity: 0;
+		transition:
+			opacity .25s .25s ease-in-out,
+			font-size .25s ease-in-out;
 	}
+
+	#slidemenu > * {
+		border-bottom: .125em solid #00000010;
+		grid-column: span 2;
+	}
+
+	header { border-bottom: .125em solid #00000010; }
 }
