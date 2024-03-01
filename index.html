@@ -26,9 +26,9 @@
 		</header>
 
 		<nav id="slidemenu">
-			<a href="#jeruk"  onclick="slidemenu_toggle(); return true">LIME</a>
-			<a href="#kopi"   onclick="slidemenu_toggle(); return true">COFFEE</a>
-			<a href="#cincau" onclick="slidemenu_toggle(); return true">CINCAU</a>
+			<a onclick="slidemenu_toggle('#jeruk'); return true">LIME</a>
+			<a onclick="slidemenu_toggle('#kopi'); return true">COFFEE</a>
+			<a onclick="slidemenu_toggle('#cincau'); return true">CINCAU</a>
 		</nav>
 
 		<section id="preview">
@@ -57,7 +57,7 @@
 		</footer>
 
 		<script type="text/javascript">
-			function slidemenu_toggle() {
+			function slidemenu_toggle(link) {
 					const slidemenu = document.getElementById("slidemenu");
 					const display_status = window.getComputedStyle(slidemenu, null).opacity
 					if (display_status === "0") {
@@ -66,6 +66,9 @@
 					} else {
 						slidemenu.style.fontSize = "0"
 						slidemenu.style.opacity = "0"
+						if (link !== undefined) {
+								window.location.href = link
+						}
 					}
 			}
 		</script>
