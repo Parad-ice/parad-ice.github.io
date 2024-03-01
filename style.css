@@ -42,7 +42,6 @@ body {
 	margin: 0px;
 	scroll-snap-type: y mandatory;
 	overflow-y: scroll;
-	height: 100vh;
 	font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem); 
 	background: var(--header-bg);
 }
