@@ -37,15 +37,18 @@ h1 {
 	text-align: center;
 	margin-top: 5em;
 }
-html { overflow: hidden; }
-body {
+html, body {
+	overflow: hidden;
 	margin: 0px;
+}
+
+main {
 	scroll-snap-type: y mandatory;
 	overflow-y: scroll;
+	height: 100vh;
 	font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem); 
 	background: var(--header-bg);
 }
-
 
 /* Header */
 header {
@@ -53,7 +56,9 @@ header {
 	display: flex;
 	align-items: center;
 	background: var(--header-bg);
-	color: var(--header-fg)
+	color: var(--header-fg);
+	scroll-snap-align: start;
+		   
 }
 
 header > div {
@@ -89,9 +94,8 @@ header .logo { margin-right: 2em }
 
 
 /* Sections */
-body > * { scroll-snap-align: start; }
-
 section {
+	scroll-snap-align: start;
 	height: 100vh;
 	font-size: 3vh;
 	padding: 0px clamp(1rem, 10%, 100%);
@@ -101,7 +105,10 @@ section {
 	display: grid;
 }
 
-section > * { justify-self: center; }
+section > * {
+	justify-self: center;
+	z-index: 1;
+}
 
 section > *:nth-child(1) { align-self: flex-end; }
 section > *:nth-child(2) { align-self: flex-start; }
@@ -132,7 +139,7 @@ section::before {
 	position: absolute;
 	left: 0;
 	right: 0;
-	z-index: -1;
+	z-index: 0;
 	display: block;
 	background-size: cover;
 	width: 100%;
@@ -226,38 +233,38 @@ footer p {
 	}
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 700px) {
 	#slidemenu, #slidemenu-btn { display: none; }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 700px) {
 	header a:not(:has(.logo)) { display: none; }
 	#slidemenu-btn {
 		display: block;
 		border: none;
-		background: var(--header-bg);
-		aspect-ratio: 1 / 1;
-		height: 5em;
-	}
-	#slidemenu-btn:hover { color: var(--header-fg); }
-	#slidemenu-btn > span { font-size: 2em; }
-	#slidemenu {
-		display: grid;
-		grid-template-rows: 1fr 1fr 1fr;
-		width: 100%;
-		z-index: 1;
-		background: var(--header-bg);
-		font-size: 0rem;
-		opacity: 0;
-		transition:
-			opacity .25s .25s ease-in-out,
-			font-size .25s ease-in-out;
-	}
+		 background: var(--header-bg);
+		 aspect-ratio: 1 / 1;
+		 height: 5em;
+	 }
+	 #slidemenu-btn:hover { color: var(--header-fg); }
+	 #slidemenu-btn > span { font-size: 2em; }
+	 #slidemenu {
+		 display: grid;
+		 grid-template-rows: 1fr 1fr 1fr;
+		 width: 100%;
+		 z-index: 1;
+		 background: var(--header-bg);
+		 font-size: 0rem;
+		 opacity: 0;
+		 transition:
+			 opacity .25s .25s ease-in-out,
+			 font-size .25s ease-in-out;
+	 }
 
-	#slidemenu > * {
-		border-bottom: .125em solid #00000010;
-		grid-column: span 2;
-	}
+	 #slidemenu > * {
+		 border-bottom: .125em solid #00000010;
+		 grid-column: span 2;
+	 }
 
-	header { border-bottom: .125em solid #00000010; }
-}
+	 header { border-bottom: .125em solid #00000010; }
+ }
