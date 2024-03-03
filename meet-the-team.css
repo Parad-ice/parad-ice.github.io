@@ -34,15 +34,13 @@ h1 {
 }
 .team-picture:nth-child(1) { background-image: url("./assets/team-picture-left.jpeg"); }
 .team-picture:nth-child(3) { background-image: url("./assets/team-picture-right.jpeg"); }
-
 div:has(#team-picture) {
 	display: flex;
 	justify-content: center;
 	background: #000;
-	margin-bottom: 5em;
-	border-bottom: .5em solid #000;
-	border-top: .5em solid #000;
+	border: .5em solid #000;
 	gap: .5em;
+	margin-bottom: 5em;
 }
 
 /* Photo Gallery */
