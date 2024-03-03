@@ -50,6 +50,7 @@ main {
 	background: var(--header-bg);
 }
 
+
 /* Header */
 header {
 	padding: 0em 2em;
@@ -58,8 +59,8 @@ header {
 	background: var(--header-bg);
 	color: var(--header-fg);
 	scroll-snap-align: start;
-		   
 }
+
 
 header > div {
 	padding: 1em;
@@ -152,7 +153,6 @@ section::before {
 	transform: scale(1.1);
 }
 
-
 #preview::before { background-image: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-mMt4yJrtdgE%2FTbka7uOlQhI%2FAAAAAAAAAP8%2Fg-3NOAszo-g%2Fs1600%2Fcool%252Bice%252Bcreams%252B%2525285%252529.jpg&f=1&nofb=1&ipt=061e9e79cbc9555a4c7b43eb4eedbdd85a7390e85646d4118c0587a3db6e2895&ipo=images"); }
 #jeruk::before { background-image: url("./assets/jeruk.jpg"); }
 #kopi::before { background-image: url("./assets/kopi.jpg"); }
@@ -160,6 +160,7 @@ section::before {
 #jeruk > h2 { color: #FFE20B; }
 #kopi > h2 { color: #BA9D83; }
 #cincau > h2 { color: #84766A; }
+
 
 /* Footer */
 footer {
@@ -178,6 +179,14 @@ footer p {
 	display: inline;
 	text-align: left;
 	vertical-align: middle;
+}
+
+
+/* Helper */
+.center-flex-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 
@@ -233,11 +242,11 @@ footer p {
 	}
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 900px) {
 	#slidemenu, #slidemenu-btn { display: none; }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
 	header a:not(:has(.logo)) { display: none; }
 	#slidemenu-btn {
 		display: block;

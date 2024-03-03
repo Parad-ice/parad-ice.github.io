@@ -1,0 +1,14 @@
+#!/bin/sh
+file="${1}"
+
+if ! [ "${1}" ]; then
+	printf "\033[1;31mERR\033[m: No filename provided\n" >&2
+	exit 1
+fi
+
+if ! [ "$(command -v convert)" ]; then
+	printf "\033[1;31mERR\033[m: ImageMagick isn't installed\n" >&2
+	exit 1
+fi
+
+convert -blur 0x15 -fill black -colorize 40% "${file}" "${file}"

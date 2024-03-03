@@ -1,0 +1,14 @@
+#!/bin/sh
+source="${1}"
+
+if ! [ "$(command -v convert)" ]; then
+	printf "\033[1;31mERR\033[m: ImageMagick isn't installed\n" >&2
+	exit 1
+fi
+
+if ! [ "${source}" ]; then
+	printf "\033[1;31mERR\033[m: No source file provided\n" >&2
+	exit 1
+fi
+
+mogrify -strip -quality 75% -resize 50% "${source}"
