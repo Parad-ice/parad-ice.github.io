@@ -37,6 +37,7 @@ h1 {
 	text-align: center;
 	margin-top: 5em;
 }
+
 html, body {
 	overflow: hidden;
 	margin: 0px;
@@ -44,6 +45,7 @@ html, body {
 
 main {
 	scroll-snap-type: y mandatory;
+	scroll-behavior: smooth;
 	overflow-y: scroll;
 	height: 100vh;
 	font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem); 
@@ -60,7 +62,6 @@ header {
 	color: var(--header-fg);
 	scroll-snap-align: start;
 }
-
 
 header > div {
 	padding: 1em;
@@ -92,6 +93,8 @@ header a:not(:has(.logo)):hover {
 }
 
 header .logo { margin-right: 2em }
+
+a { cursor: pointer; }
 
 
 /* Sections */
@@ -170,6 +173,7 @@ footer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	scroll-snap-align: start;
 }
 footer a svg {
 	float: right;
